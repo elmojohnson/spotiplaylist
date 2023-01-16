@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import CreatePlaylistContext from "@/contexts/CreatePlaylistContext";
+import PlaylistContext from "@/contexts/PlaylistContext";
 import Tracks from "@/components/lists/Tracks";
 
 const SelectedTracksTab = () => {
-  const { selectedTracks } = useContext(CreatePlaylistContext);
+  const { selectedTracks } = useContext(PlaylistContext);
   return (
     <div>
       {selectedTracks.length === 0 ? (

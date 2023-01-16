@@ -16,6 +16,8 @@ const useSearchTracks = () => {
       setLoading(tracks);
       const result = await spotify.get(`/search?q=${query}&type=track`);
       setTracks(result.data.tracks.items);
+
+      console.log(result.data)
     } catch (error) {
       console.error(error);
     } finally {

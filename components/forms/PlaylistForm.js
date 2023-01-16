@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import CreatePlaylistContext from "@/contexts/CreatePlaylistContext";
+import PlaylistContext from "@/contexts/PlaylistContext";
 
 import { Formik } from "formik";
 import PlaylistSchema from "@/form_schema/PlaylistSchema";
 
 const PlaylistForm = () => {
-  const { createPlaylist } = useContext(CreatePlaylistContext);
+  const { createPlaylist } = useContext(PlaylistContext);
   return (
     <Formik
       initialValues={{

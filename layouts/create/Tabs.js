@@ -1,11 +1,13 @@
 import { useContext, useState } from "react";
-import CreatePlaylistContext from "@/contexts/CreatePlaylistContext";
+import PlaylistContext from "@/contexts/PlaylistContext";
 
 import SearchTab from "./SearchTab";
 import SelectedTracksTab from "./SelectedTracksTab";
 
+import { motion } from "framer-motion";
+
 const Tabs = () => {
-  const { selectedTracks } = useContext(CreatePlaylistContext);
+  const { selectedTracks } = useContext(PlaylistContext);
   const [currentTab, setCurrentTab] = useState(0);
   const tabs = [
     {
@@ -27,7 +29,7 @@ const Tabs = () => {
               className="relative px-6 flex items-center justify-center"
             >
               <button
-                className={`font-bold uppercase ${
+                className={`font-bold uppercase py-2 ${
                   i === currentTab ? "text-primary" : "text-muted"
                 }`}
                 onClick={() => setCurrentTab(i)}
@@ -35,7 +37,7 @@ const Tabs = () => {
                 {tab.name}
               </button>
               {currentTab === i && (
-                <div className="h-1 w-full bg-primary absolute -bottom-1" />
+                <motion.div className="h-1 w-full bg-primary absolute -bottom-1" layoutId="underline" />
               )}
             </div>
           );

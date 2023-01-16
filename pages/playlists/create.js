@@ -1,17 +1,21 @@
 import useCreatePlaylists from "@/hooks/spotify/useCreatePlaylists";
+import useSearchTracks from "@/hooks/spotify/useSearchTracks";
+import PlaylistContext from "@/contexts/PlaylistContext";
 
 import Layout from "@/layouts/Layout";
-import PlaylistForm from "@/components/forms/PlaylistForm";
 import Tabs from "@/layouts/create/Tabs";
-import CreatePlaylistContext from "@/contexts/CreatePlaylistContext";
 import Loading from "@/components/utils/Loading";
+import PlaylistForm from "@/components/forms/PlaylistForm";
 
 const CreatePlaylist = () => {
   const createPlaylist = useCreatePlaylists();
+  const searchTracks = useSearchTracks();
 
   return (
     <Layout>
-      <CreatePlaylistContext.Provider value={createPlaylist}>
+      <PlaylistContext.Provider
+        value={{ ...createPlaylist, ...searchTracks }}
+      >
         {createPlaylist.isCreating ? (
           <Loading message="Creating your playlist..." />
         ) : (
@@ -20,7 +24,7 @@ const CreatePlaylist = () => {
             <Tabs />
           </div>
         )}
-      </CreatePlaylistContext.Provider>
+      </PlaylistContext.Provider>
     </Layout>
   );
 };

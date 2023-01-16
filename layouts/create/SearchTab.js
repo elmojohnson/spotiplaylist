@@ -6,13 +6,20 @@ import Tracks from "@/components/lists/Tracks";
 import Loading from "@/components/utils/Loading";
 
 const SearchTab = () => {
-  const { query, onChangeQuery, searchTracks, isLoading, tracks } = useContext(PlaylistContext);
+  const {
+    query,
+    onChangeQuery,
+    searchTracks,
+    isLoading,
+    tracks,
+    handleNextPage,
+    total,
+    isLoadingMore,
+  } = useContext(PlaylistContext);
 
   return (
     <div>
-      <h1 className="font-semibold mb-1">
-        Search Tracks
-      </h1>
+      <h1 className="font-semibold mb-1">Search Tracks</h1>
       <Search
         value={query}
         handleChange={onChangeQuery}
@@ -22,7 +29,25 @@ const SearchTab = () => {
         {isLoading ? (
           <Loading />
         ) : (
-          <Tracks tracks={tracks} isSelection={true} />
+          <>
+            {tracks.length !== 0 && (
+              <div className="flex flex-col space-y-4">
+                <Tracks tracks={tracks} isSelection={true} />
+                {tracks.length < total && (
+                  <button
+                    onClick={handleNextPage}
+                    className="btn w-full bg-primary text-white disabled:bg-muted disabled:animate-pulse"
+                    disabled={isLoadingMore}
+                  >
+                    {isLoadingMore ? "Loading..." : "Load more"}
+                  </button>
+                )}
+                <p>
+                  {tracks.length} / {total}
+                </p>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>

@@ -13,13 +13,12 @@ const PlaylistContext = createContext({
   isCreating: false,
 
   // Search tracks
-  search: {
-    query: "",
-    onChangeQuery: () => {},
-    searchTracks: () => {},
-    tracks: [],
-    isLoading: false,
-  },
+  query: "",
+  onChangeQuery: () => {},
+  searchTracks: () => {},
+  tracks: [],
+  isLoading: false,
+  handleNextPage: () => {},
 });
 
 export default PlaylistContext;

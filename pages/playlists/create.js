@@ -1,4 +1,4 @@
-import useCreatePlaylists from "@/hooks/spotify/useCreatePlaylists";
+import useMutatePlaylist from "@/hooks/spotify/useMutatePlaylist";
 import useSearchTracks from "@/hooks/spotify/useSearchTracks";
 import PlaylistContext from "@/contexts/PlaylistContext";
 
@@ -8,7 +8,7 @@ import Loading from "@/components/utils/Loading";
 import PlaylistForm from "@/components/forms/PlaylistForm";
 
 const CreatePlaylist = () => {
-  const createPlaylist = useCreatePlaylists();
+  const createPlaylist = useMutatePlaylist();
   const searchTracks = useSearchTracks();
 
   return (

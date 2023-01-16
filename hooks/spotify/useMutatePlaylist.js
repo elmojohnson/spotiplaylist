@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import spotify from "@/lib/spotify";
 
-const useCreatePlaylists = () => {
+const useMutatePlaylist = () => {
   const router = useRouter();
   const [selectedTracks, setSelectedTracks] = useState([]);
   const [isCreating, setCreating] = useState(false);
@@ -12,7 +12,7 @@ const useCreatePlaylists = () => {
     if (!selectedTracks.includes(id)) {
       setSelectedTracks([...selectedTracks, id]);
     } else {
-      setSelectedTracks(selectedTracks.filter((el) => el !== id));
+      setSelectedTracks(selectedTracks.filter((el) => el.id !== id.id));
     }
   };
 
@@ -49,4 +49,4 @@ const useCreatePlaylists = () => {
   return { createPlaylist, selectedTracks, handleSelect, isCreating };
 };
 
-export default useCreatePlaylists;
+export default useMutatePlaylist;

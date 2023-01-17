@@ -24,6 +24,7 @@ const SearchTab = () => {
         value={query}
         handleChange={onChangeQuery}
         handleSearch={searchTracks}
+        isLoading={isLoading}
       />
       <div className="mt-4">
         {isLoading ? (

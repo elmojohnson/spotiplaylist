@@ -14,11 +14,11 @@
   }
 
   .navbar {
-    @apply py-4 bg-primary shadow text-white sticky top-0 z-50;
+    @apply py-3 bg-white shadow-lg text-muted sticky top-0 z-50;
   }
 
   .nav_title {
-    @apply font-bold text-2xl;
+    @apply font-bold text-xl text-black;
   }
 
   .btn {

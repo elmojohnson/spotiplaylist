@@ -6,8 +6,8 @@ const NavItem = ({ name, href }) => {
   return (
     <Link
       href={href}
-      className={`uppercase ${
-        router.pathname === href ? "text-white" : "text-blue-300"
+      className={`${
+        router.pathname === href ? "text-primary" : "text-muted"
       } font-semibold`}
     >
       {name}

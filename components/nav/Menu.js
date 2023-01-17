@@ -12,7 +12,7 @@ const Menu = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="bg-primary absolute top-16 left-0 w-full py-4 md:hidden block"
+      className="bg-white absolute top-12 left-0 w-full py-4 md:hidden block shadow-lg"
     >
       <div className="flex flex-col space-y-4 wrapper">
         {layout.navItems.map((item, i) => {

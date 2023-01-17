@@ -8,15 +8,15 @@ import Loading from "@/components/utils/Loading";
 import PlaylistForm from "@/components/forms/PlaylistForm";
 
 const CreatePlaylist = () => {
-  const createPlaylist = useMutatePlaylist();
+  const mutatePlaylist = useMutatePlaylist();
   const searchTracks = useSearchTracks();
 
   return (
     <Layout>
       <PlaylistContext.Provider
-        value={{ ...createPlaylist, ...searchTracks }}
+        value={{ ...mutatePlaylist, ...searchTracks }}
       >
-        {createPlaylist.isCreating ? (
+        {mutatePlaylist.isCreating ? (
           <Loading message="Creating your playlist..." />
         ) : (
           <div className="flex flex-col space-y-4">

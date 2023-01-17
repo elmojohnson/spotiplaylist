@@ -3,6 +3,7 @@ import PlaylistContext from "@/contexts/PlaylistContext";
 
 import { Formik } from "formik";
 import PlaylistSchema from "@/form_schema/PlaylistSchema";
+import { MdSave } from "react-icons/md";
 
 const PlaylistForm = () => {
   const { createPlaylist } = useContext(PlaylistContext);
@@ -24,15 +25,16 @@ const PlaylistForm = () => {
         handleSubmit,
       }) => (
         <div className="rounded-lg bg-white p-4">
-          <div className="flex items-start justify-between mb-4">
-            <h1 className="heading">{values.name || "New Playlist"}</h1>
+          <div className="flex items-start justify-between space-x-3 mb-4">
+            <h1 className="heading">New Playlist</h1>
             <button
               type="submit"
               onClick={handleSubmit}
-              className="btn bg-accent text-white w-fit self-end"
+              className="btn flex items-center space-x-2 font-bold uppercase text-white bg-primary"
               disabled={isSubmitting}
             >
-              Create
+              <MdSave />
+              <span>Save</span>
             </button>
           </div>
           <div className="flex flex-col space-y-3 w-full">
@@ -40,7 +42,7 @@ const PlaylistForm = () => {
               <input
                 placeholder="Name"
                 name="name"
-                className={`border px-3 py-2 rounded-lg outline-none w-full ${
+                className={`rounded-lg border px-3 py-2 outline-none w-full ${
                   errors.name && touched.name ? "border-red-500" : null
                 }`}
                 value={values.name}

@@ -30,7 +30,7 @@ const PlaylistForm = () => {
             <button
               type="submit"
               onClick={handleSubmit}
-              className="btn flex items-center space-x-2 font-bold uppercase text-white bg-primary"
+              className="btn flex items-center space-x-2 font-bold uppercase text-primary bg-transparent"
               disabled={isSubmitting}
             >
               <MdSave />

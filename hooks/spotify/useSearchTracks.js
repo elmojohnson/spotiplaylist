@@ -26,8 +26,6 @@ const useSearchTracks = () => {
       const result = await spotify.get("/me/top/tracks");
       setTracks(result.data.items);
       setTotal(20);
-
-      console.log(result)
     } catch (error) {
       console.error(error);
     } finally {

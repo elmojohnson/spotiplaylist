@@ -19,6 +19,22 @@ const useSearchTracks = () => {
   // Set nextUrl value to currentUrl
   const handleNextPage = () => setCurrentUrl(nextUrl);
 
+  // Get top user's top tracks
+  const getUserTopTracks = async () => {
+    try {
+      setLoading(true);
+      const result = await spotify.get("/me/top/tracks");
+      setTracks(result.data.items);
+      setTotal(20);
+
+      console.log(result)
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
   // Search tracks
   const searchTracks = async () => {
     try {
@@ -42,8 +58,6 @@ const useSearchTracks = () => {
       setTracks([...tracks, ...result.data.tracks.items]);
       setTotal(result.data.tracks.total);
       setNextUrl(result.data.tracks.next);
-
-      console.log(result.data.tracks);
     } catch (error) {
       console.error(error);
     } finally {
@@ -55,6 +69,11 @@ const useSearchTracks = () => {
   useEffect(() => {
     tracks.length !== 0 && loadMoreTracks();
   }, [currentUrl]);
+
+  // On page load, show user's top tracks
+  useEffect(() => {
+    getUserTopTracks();
+  }, [])
 
   return { query, isLoading, tracks, total, isLoadingMore, onChangeQuery, searchTracks, handleNextPage };
 };

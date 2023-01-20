@@ -11,6 +11,8 @@ const PlaylistContext = createContext({
   handleSelect: () => {},
   createPlaylist: () => {},
   isCreating: false,
+  isTrackChanged: false,
+  handleTracksUpdate: () => {},
 
   // Search tracks
   query: "",

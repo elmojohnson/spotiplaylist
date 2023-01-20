@@ -21,7 +21,7 @@ const Tabs = () => {
   ];
   return (
     <div className="bg-white rounded-lg p-4">
-      <div className="flex items-center mb-4">
+      <div className="flex items-center mb-4 relative">
         {tabs.map((tab, i) => {
           return (
             <div
@@ -45,6 +45,7 @@ const Tabs = () => {
             </div>
           );
         })}
+        <button className="absolute right-0 btn">Update Changes</button>
       </div>
       <div>{tabs[currentTab].component}</div>
     </div>

@@ -11,12 +11,12 @@ const Tabs = () => {
   const [currentTab, setCurrentTab] = useState(0);
   const tabs = [
     {
-      name: "Search",
-      component: <SearchTab />,
+      name: `Tracks (${selectedTracks.length})`,
+      component: <SelectedTracksTab />,
     },
     {
-      name: `Selected (${selectedTracks.length})`,
-      component: <SelectedTracksTab />,
+      name: "Search",
+      component: <SearchTab />,
     },
   ];
   return (
@@ -37,7 +37,10 @@ const Tabs = () => {
                 {tab.name}
               </button>
               {currentTab === i && (
-                <motion.div className="h-1 w-full bg-primary absolute -bottom-1" layoutId="underline" />
+                <motion.div
+                  className="h-1 w-full bg-primary absolute -bottom-1"
+                  layoutId="underline"
+                />
               )}
             </div>
           );

@@ -15,7 +15,7 @@ const Navbar = () => {
     <div className="navbar">
       <div className="wrapper flex items-center justify-between relative">
         <div className="flex items-center space-x-2">
-          <BsSpotify className="text-primary text-2xl" />
+          <BsSpotify className="text-primary text-4xl" />
           <h1 className="nav_title">Playlist Creator</h1>
         </div>
         <div className="md:flex hidden items-center space-x-5">

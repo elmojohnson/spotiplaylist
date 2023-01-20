@@ -8,7 +8,7 @@ const Tracks = ({ tracks, isSelection }) => {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 10 }}
-      transition={{delay: 0.5}}
+      transition={{ delay: 0.5 }}
       className="flex flex-col space-y-3"
     >
       {tracks.map((track, i) => {

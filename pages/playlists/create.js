@@ -3,7 +3,7 @@ import useSearchTracks from "@/hooks/spotify/useSearchTracks";
 import PlaylistContext from "@/contexts/PlaylistContext";
 
 import Layout from "@/layouts/Layout";
-import Tabs from "@/layouts/create/Tabs";
+import Tabs from "@/layouts/playlist_tab/Tabs";
 import Loading from "@/components/utils/Loading";
 import PlaylistForm from "@/components/forms/PlaylistForm";
 

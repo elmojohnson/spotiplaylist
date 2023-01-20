@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import spotify from "@/lib/spotify";
 
@@ -7,12 +7,22 @@ const useMutatePlaylist = () => {
   const [selectedTracks, setSelectedTracks] = useState([]);
   const [isCreating, setCreating] = useState(false);
 
+  // Load tracks from playlist
+  const loadPlaylistTracks = async () => {
+    try {
+      const result = await spotify.get(`/playlists/${router.query?.id}/tracks`);
+      setSelectedTracks(result.data.items.map(item => item.track))
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   // Handle track selection
-  const handleSelect = (id) => {
-    if (!selectedTracks.includes(id)) {
-      setSelectedTracks([...selectedTracks, id]);
+  const handleSelect = (track) => {
+    if (!selectedTracks.includes(track)) {
+      setSelectedTracks([track, ...selectedTracks]);
     } else {
-      setSelectedTracks(selectedTracks.filter((el) => el.id !== id.id));
+      setSelectedTracks(selectedTracks.filter((el) => el.id !== track.id));
     }
   };
 
@@ -45,6 +55,11 @@ const useMutatePlaylist = () => {
       setCreating(false);
     }
   };
+
+  // Run this if there is a query params (playlist id)
+  useEffect(() => {
+    router.query.id && loadPlaylistTracks();
+  }, [router])
 
   return { createPlaylist, selectedTracks, handleSelect, isCreating };
 };

@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import PlaylistContext from "@/contexts/PlaylistContext";
+import { useRouter } from "next/router";
 
 import SearchTab from "./SearchTab";
 import SelectedTracksTab from "./SelectedTracksTab";
@@ -7,7 +8,10 @@ import SelectedTracksTab from "./SelectedTracksTab";
 import { motion } from "framer-motion";
 
 const Tabs = () => {
-  const { selectedTracks, isTrackChanged, handleTracksUpdate } = useContext(PlaylistContext);
+  const router = useRouter();
+
+  const { selectedTracks, isTrackChanged, handleTracksUpdate } =
+    useContext(PlaylistContext);
   const [currentTab, setCurrentTab] = useState(0);
   const tabs = [
     {
@@ -45,7 +49,14 @@ const Tabs = () => {
             </div>
           );
         })}
-        {!isTrackChanged && <button className="absolute right-0 btn bg-primary text-white" onClick={handleTracksUpdate}>Update Changes</button>}
+        {!isTrackChanged && router.query.id ? (
+          <button
+            className="absolute right-0 btn bg-primary text-white"
+            onClick={handleTracksUpdate}
+          >
+            Update Changes
+          </button>
+        ) : null}
       </div>
       <div>{tabs[currentTab].component}</div>
     </div>

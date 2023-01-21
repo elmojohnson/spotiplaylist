@@ -24,7 +24,7 @@ const useMutatePlaylist = () => {
 
   // Handle track selection
   const handleSelect = (track) => {
-    if (!selectedTracks.includes(track)) {
+    if (!selectedTracks.map((item) => item.id).includes(track.id)) {
       setSelectedTracks([track, ...selectedTracks]);
     } else {
       setSelectedTracks(selectedTracks.filter((el) => el.id !== track.id));

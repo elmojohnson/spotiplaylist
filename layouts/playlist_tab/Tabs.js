@@ -45,7 +45,7 @@ const Tabs = () => {
             </div>
           );
         })}
-        {!isTrackChanged && <button className="absolute right-0 btn" onClick={handleTracksUpdate}>Update Changes</button>}
+        {!isTrackChanged && <button className="absolute right-0 btn bg-primary text-white" onClick={handleTracksUpdate}>Update Changes</button>}
       </div>
       <div>{tabs[currentTab].component}</div>
     </div>

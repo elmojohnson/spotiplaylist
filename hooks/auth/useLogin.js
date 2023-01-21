@@ -28,8 +28,19 @@ const useLogin = () => {
       if (window !== undefined) {
         localStorage.setItem("access_token", result.data.access_token);
         localStorage.setItem("refresh_token", result.data.refresh_token);
-        router.push("/");
+
+        // Save current user external url
+        const user = await axios.get("https://api.spotify.com/v1/me", {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${result.data.access_token}`,
+          },
+        });
+        localStorage.setItem("user", JSON.stringify(user.data));
       }
+      
+      router.push("/");
     } catch (error) {
       console.error(error);
     } finally {

@@ -26,12 +26,15 @@ const UpdatePlaylistModal = ({ toggleOpen }) => {
         <div className="w-full">
           <PlaylistForm />
         </div>
-        <button
-          className="btn w-full bg-red-500 text-white"
-          onClick={deletePlaylist}
-        >
-          Delete
-        </button>
+        <div className="w-full flex justify-between bg-white rounded-lg p-4">
+          <h5 className="font-bold text-lg">Danger Zone</h5>
+          <button
+            className="btn bg-white border border-red-500 text-red-500"
+            onClick={deletePlaylist}
+          >
+            Unfollow Playlist
+          </button>
+        </div>
       </div>
     </motion.div>
   );

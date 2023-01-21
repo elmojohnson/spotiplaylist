@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import spotify from "@/lib/spotify";
+import { toast } from "react-toastify";
 
 const useMutatePlaylist = () => {
   const router = useRouter();
@@ -68,6 +69,10 @@ const useMutatePlaylist = () => {
       });
 
       setTrackChanged(true);
+
+      toast("Tracks updated!", {
+        type: "success"
+      });
 
       console.log(result.data)
     } catch (error) {

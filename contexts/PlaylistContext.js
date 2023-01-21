@@ -14,6 +14,7 @@ const PlaylistContext = createContext({
   isTrackChanged: false,
   handleTracksUpdate: () => {},
   updatePlaylistInfo: () => {},
+  deletePlaylist: () => {},
 
   // Search tracks
   query: "",

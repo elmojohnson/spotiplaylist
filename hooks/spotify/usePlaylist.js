@@ -48,11 +48,27 @@ const usePlaylist = () => {
     }
   };
 
+  // Delete playlist
+  const deletePlaylist = async () => {
+    try {
+      const result = await spotify.delete(`/playlists/${router.query.id}/followers`);
+      console.log(result.data);
+      
+      toast("Deleted!", {
+        type: "success"
+      });
+
+      router.push("/");
+    } catch (error) {
+     console.error(error) 
+    }
+  }
+
   useEffect(() => {
     router.query.id && getPlaylist();
   }, [router]);
 
-  return { isLoading, name, image, description, updatePlaylistInfo };
+  return { isLoading, name, image, description, updatePlaylistInfo, deletePlaylist };
 };
 
 export default usePlaylist;

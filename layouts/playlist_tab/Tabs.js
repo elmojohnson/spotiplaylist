@@ -7,7 +7,7 @@ import SelectedTracksTab from "./SelectedTracksTab";
 import { motion } from "framer-motion";
 
 const Tabs = () => {
-  const { selectedTracks, isTrackChanged } = useContext(PlaylistContext);
+  const { selectedTracks, isTrackChanged, handleTracksUpdate } = useContext(PlaylistContext);
   const [currentTab, setCurrentTab] = useState(0);
   const tabs = [
     {
@@ -45,7 +45,7 @@ const Tabs = () => {
             </div>
           );
         })}
-        {!isTrackChanged && <button className="absolute right-0 btn">Update Changes</button>}
+        {!isTrackChanged && <button className="absolute right-0 btn" onClick={handleTracksUpdate}>Update Changes</button>}
       </div>
       <div>{tabs[currentTab].component}</div>
     </div>

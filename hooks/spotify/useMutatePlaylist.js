@@ -62,7 +62,15 @@ const useMutatePlaylist = () => {
 
   // Update tracks when there is changes
   const handleTracksUpdate = async () => {
+    try {
+      const result = await spotify.put(`/playlists/${router.query.id}/tracks`, {
+        uris: selectedTracks.map(track => track.uri)
+      })
 
+      console.log(result.data)
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   // Run this if there is a query params (playlist id)

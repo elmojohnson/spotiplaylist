@@ -65,7 +65,9 @@ const useMutatePlaylist = () => {
     try {
       const result = await spotify.put(`/playlists/${router.query.id}/tracks`, {
         uris: selectedTracks.map(track => track.uri)
-      })
+      });
+
+      setTrackChanged(true);
 
       console.log(result.data)
     } catch (error) {

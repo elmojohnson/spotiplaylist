@@ -22,7 +22,7 @@ const Header = () => {
               width={200}
               height={200}
               priority
-              className="rounded-lg sm:h-44 h-24 w-auto"
+              className="rounded-lg sm:h-32 h-24 w-auto"
             />
           )}
           <div className="flex flex-col justify-end w-full relative">

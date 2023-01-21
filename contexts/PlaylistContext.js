@@ -13,6 +13,7 @@ const PlaylistContext = createContext({
   isCreating: false,
   isTrackChanged: false,
   handleTracksUpdate: () => {},
+  updatePlaylistInfo: () => {},
 
   // Search tracks
   query: "",

@@ -9,14 +9,14 @@ import Tabs from "@/layouts/playlist_tab/Tabs";
 import Header from "@/layouts/playlist/Header";
 
 const Playlist = () => {
-  const { name, image, description } = usePlaylist();
+  const { name, image, description, updatePlaylistInfo } = usePlaylist();
   const mutatePlaylist = useMutatePlaylist();
   const searchTracks = useSearchTracks();
 
   return (
     <Layout>
       <PlaylistContext.Provider
-        value={{ name, image, description, ...mutatePlaylist, ...searchTracks }}
+        value={{ name, image, description, updatePlaylistInfo, ...mutatePlaylist, ...searchTracks }}
       >
         <div className="flex flex-col space-y-4">
           <Header />

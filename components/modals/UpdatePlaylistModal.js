@@ -1,4 +1,7 @@
 import { motion } from "framer-motion";
+import PlaylistForm from "../forms/PlaylistForm";
+
+import { MdClose } from "react-icons/md";
 
 const UpdatePlaylistModal = ({ toggleOpen }) => {
   return (
@@ -9,10 +12,15 @@ const UpdatePlaylistModal = ({ toggleOpen }) => {
       className="w-full h-full fixed bottom-0 right-0 z-50 flex items-center justify-center"
     >
       <div className="h-full w-full bg-black opacity-75 fixed top-0 right-0" />
-      <div className="bg-white rounded-lg h-1/2 w-1/2 p-4 shadow-xl z-50">
-        <button className="btn" onClick={toggleOpen}>
-          Close
+      <div className="h-1/2 w-1/2 z-50 flex flex-col items-end">
+        <button
+          className="text-white flex items-center space-x-3 mb-4"
+          onClick={toggleOpen}
+        >
+          <MdClose />
+          <span>Close</span>
         </button>
+        <div className="w-full"><PlaylistForm /></div>
       </div>
     </motion.div>
   );

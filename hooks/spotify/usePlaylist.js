@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 import spotify from "@/lib/spotify";
+import { toast } from "react-toastify";
 
 const usePlaylist = () => {
   const router = useRouter();
@@ -19,7 +20,6 @@ const usePlaylist = () => {
       setName(result.data.name);
       setImage(result.data.images[0].url);
       setDescription(result.data.description);
-
     } catch (error) {
       console.error(error);
     } finally {
@@ -27,11 +27,32 @@ const usePlaylist = () => {
     }
   };
 
-  useEffect(() => {
-    router.query.id && getPlaylist()
-  }, [router])
+  // Update playlist info
+  const updatePlaylistInfo = async (values, { setSubmitting }) => {
+    try {
+      const result = await spotify.put(`/playlists/${router.query.id}`, {
+        name: values.name,
+        description: values.description,
+      });
 
-  return { isLoading, name, image, description };
+      setName(values.name);
+      setDescription(values.description);
+
+      toast("Updated!", {
+        type: "success"
+      });
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  useEffect(() => {
+    router.query.id && getPlaylist();
+  }, [router]);
+
+  return { isLoading, name, image, description, updatePlaylistInfo };
 };
 
 export default usePlaylist;

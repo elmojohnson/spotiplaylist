@@ -1,20 +1,23 @@
 import { useContext } from "react";
 import PlaylistContext from "@/contexts/PlaylistContext";
+import { useRouter } from "next/router";
 
 import { Formik } from "formik";
 import PlaylistSchema from "@/form_schema/PlaylistSchema";
 import { MdSave } from "react-icons/md";
 
 const PlaylistForm = () => {
-  const { createPlaylist } = useContext(PlaylistContext);
+  const router = useRouter();
+
+  const { name, description, createPlaylist, updatePlaylistInfo } = useContext(PlaylistContext);
   return (
     <Formik
       initialValues={{
-        name: "",
-        description: "",
+        name: name,
+        description: description,
       }}
       validationSchema={PlaylistSchema}
-      onSubmit={createPlaylist}
+      onSubmit={router.query.id ? updatePlaylistInfo : createPlaylist}
     >
       {({
         values,

@@ -7,11 +7,15 @@ const useMutatePlaylist = () => {
   const [selectedTracks, setSelectedTracks] = useState([]);
   const [isCreating, setCreating] = useState(false);
 
+  const [defaultTracks, setDefaultTracks] = useState([]); // Used to compare
+  const [isTrackChanged, setTrackChanged] = useState(false);
+
   // Load tracks from playlist
   const loadPlaylistTracks = async () => {
     try {
       const result = await spotify.get(`/playlists/${router.query?.id}/tracks`);
-      setSelectedTracks(result.data.items.map(item => item.track))
+      setSelectedTracks(result.data.items.map(item => item.track));
+      setDefaultTracks(result.data.items.map(item => item.track));
     } catch (error) {
       console.error(error);
     }
@@ -56,12 +60,24 @@ const useMutatePlaylist = () => {
     }
   };
 
+  // Update tracks when there is changes
+  const handleTracksUpdate = async () => {
+
+  }
+
   // Run this if there is a query params (playlist id)
   useEffect(() => {
     router.query.id && loadPlaylistTracks();
   }, [router])
 
-  return { createPlaylist, selectedTracks, handleSelect, isCreating };
+  // Listen when tracks changed. This will only run when viewing playlist created, not when creating.
+  useEffect(() => {
+    if(router.query.id) {
+      setTrackChanged(JSON.stringify(defaultTracks.map(el => el.id)) === JSON.stringify(selectedTracks.map(el => el.id)));
+    }
+  }, [selectedTracks])
+
+  return { createPlaylist, selectedTracks, handleSelect, isCreating, isTrackChanged, handleTracksUpdate };
 };
 
 export default useMutatePlaylist;

@@ -4,6 +4,7 @@ import PlaylistContext from "@/contexts/PlaylistContext";
 
 import Image from "next/image";
 import { AnimatePresence } from "framer-motion";
+import { MdEdit } from "react-icons/md";
 
 const Header = () => {
   const playlist = useContext(PlaylistContext);
@@ -30,8 +31,9 @@ const Header = () => {
               {playlist.name}
             </h1>
             <p className="text-muted">{playlist.description}</p>
-            <button className="absolute btn top-0 right-0" onClick={toggleOpen}>
-              Edit
+            <button className="absolute top-0 right-0 text-muted hover:text-primary uppercase flex items-center space-x-2 font-bold" onClick={toggleOpen}>
+              <MdEdit />
+              <span>Edit</span>
             </button>
           </div>
         </div>

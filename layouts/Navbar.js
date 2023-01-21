@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import Link from "next/link";
 import LayoutContext from "@/contexts/LayoutContext";
 
 import Menu from "@/components/nav/Menu";
@@ -16,7 +17,7 @@ const Navbar = () => {
       <div className="wrapper flex items-center justify-between relative">
         <div className="flex items-center space-x-2">
           <BsSpotify className="text-primary text-4xl" />
-          <h1 className="nav_title">Playlist Creator</h1>
+          <Link href="/" className="nav_title">Playlist Creator</Link>
         </div>
         <div className="md:flex hidden items-center space-x-5">
           {layout.navItems.map((item, i) => {

@@ -15,14 +15,16 @@ const Account = () => {
   return (
     <Layout>
       <div className="flex flex-col items-center p-4 rounded-lg bg-white">
-        <Image
-          src={user.images[0]?.url}
-          alt={user.display_name}
-          width={100}
-          height={100}
-          priority
-          className="rounded-full mb-4"
-        />
+        {user.images[0]?.url && (
+          <Image
+            src={user.images[0]?.url}
+            alt={user.display_name}
+            width={100}
+            height={100}
+            priority
+            className="rounded-full mb-4"
+          />
+        )}
         <h1 className="font-bold text-xl">{user.display_name}</h1>
         <p>{user.email}</p>
         <button className="btn mt-4" onClick={logout}>

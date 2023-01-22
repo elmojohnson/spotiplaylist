@@ -17,7 +17,7 @@ const PlaylistItem = ({ id, uri, name, image, trackCount }) => {
           width={200}
           height={200}
           priority
-          className="rounded-lg"
+          className="rounded-lg w-full"
         />
       )}
       <div className="flex flex-col w-full leading-none">

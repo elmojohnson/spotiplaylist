@@ -40,9 +40,9 @@ const TrackItem = ({ track, isSelection }) => {
           {track.artists.map((a) => a.name).join(", ")}
         </span>
       </div>
-      <div className="flex items-center space-x-1">
+      {/* <div className="flex items-center space-x-1">
         <PlayButton />
-      </div>
+      </div> */}
     </motion.div>
   );
 };

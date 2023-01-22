@@ -20,7 +20,7 @@ const Home = () => {
                   key={item.id}
                   id={item.id}
                   name={item.name}
-                  image={item.images[1]?.url}
+                  image={item.images[0]?.url}
                   trackCount={item.tracks.total}
                 />
               );

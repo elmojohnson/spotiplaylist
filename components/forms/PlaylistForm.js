@@ -10,11 +10,12 @@ const PlaylistForm = () => {
   const router = useRouter();
 
   const { name, description, createPlaylist, updatePlaylistInfo } = useContext(PlaylistContext);
+
   return (
     <Formik
       initialValues={{
-        name: name,
-        description: description,
+        name: name || "",
+        description: description || "",
       }}
       validationSchema={PlaylistSchema}
       onSubmit={router.query.id ? updatePlaylistInfo : createPlaylist}

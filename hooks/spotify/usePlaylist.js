@@ -18,7 +18,7 @@ const usePlaylist = () => {
       const result = await spotify.get("/playlists/" + router.query.id);
 
       setName(result.data.name);
-      setImage(result.data.images[0].url);
+      setImage(result.data.images[0]?.url);
       setDescription(result.data.description);
     } catch (error) {
       console.error(error);

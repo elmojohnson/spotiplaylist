@@ -6,7 +6,12 @@ A playlist manager using Spotify Web API.
 * Add and remove tracks to playlist
 * Search tracks
 
-## Techology used
+## Features to add
+* Play a playlist or a track
+* Queue a track
+* Custom playlist cover image
+
+## Technology used
 * Next.JS
 * Tailwind
 * Framer Motion

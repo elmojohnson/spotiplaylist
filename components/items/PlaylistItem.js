@@ -8,19 +8,19 @@ const PlaylistItem = ({ id, uri, name, image, trackCount }) => {
     <motion.div
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      className="bg-white hover:shadow-xl flex items-center space-x-3 overflow-hidden rounded-lg p-3"
+      className="bg-white hover:shadow-xl flex flex-col items-center justify-end space-y-3 overflow-hidden rounded-lg p-3"
     >
       {image && (
         <Image
           src={image}
           alt={name}
-          width={80}
-          height={80}
+          width={200}
+          height={200}
           priority
           className="rounded-lg"
         />
       )}
-      <div className="flex flex-col h-full w-full justify-center leading-none">
+      <div className="flex flex-col w-full leading-none">
         <Link
           href={"/playlists/" + id}
           className="font-bold text-xl line-clamp-2 hover:text-primary"

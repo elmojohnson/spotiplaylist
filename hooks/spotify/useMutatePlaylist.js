@@ -73,8 +73,6 @@ const useMutatePlaylist = () => {
       toast("Tracks updated!", {
         type: "success"
       });
-
-      console.log(result.data)
     } catch (error) {
       console.error(error);
     }

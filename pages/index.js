@@ -13,7 +13,7 @@ const Home = () => {
         {isLoading ? (
           <Loading />
         ) : (
-          <div className="flex flex-col space-y-4">
+          <div className="grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-4">
             {items.map((item) => {
               return (
                 <PlaylistItem

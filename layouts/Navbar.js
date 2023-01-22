@@ -17,7 +17,7 @@ const Navbar = () => {
       <div className="wrapper flex items-center justify-between relative">
         <div className="flex items-center space-x-2">
           <BsSpotify className="text-primary text-4xl" />
-          <Link href="/" className="nav_title">Playlist Creator</Link>
+          <Link href="/" className="nav_title">Playlist Manager</Link>
         </div>
         <div className="md:flex hidden items-center space-x-5">
           {layout.navItems.map((item, i) => {

@@ -26,8 +26,8 @@ const Header = () => {
               className="rounded-lg sm:h-32 h-24 w-auto"
             />
           )}
-          <div className="flex flex-col justify-end w-full relative">
-            <h1 className="font-bold text-4xl line-clamp-2 leading-none">
+          <div className="flex flex-col justify-center w-full relative">
+            <h1 className="font-bold text-4xl line-clamp-2 leading-tight">
               {playlist.name}
             </h1>
             <p className="text-muted">{playlist.description}</p>

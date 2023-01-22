@@ -10,8 +10,7 @@ import { motion } from "framer-motion";
 const Tabs = () => {
   const router = useRouter();
 
-  const { selectedTracks, isTrackChanged, handleTracksUpdate } =
-    useContext(PlaylistContext);
+  const { selectedTracks, isTrackChanged, handleTracksUpdate } = useContext(PlaylistContext);
   const [currentTab, setCurrentTab] = useState(0);
   const tabs = [
     {

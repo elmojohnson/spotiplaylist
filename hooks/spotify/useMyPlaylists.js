@@ -19,7 +19,9 @@ const useMyPlaylists = () => {
   };
 
   useEffect(() => {
-    getMyPlaylists();
+    if(window !== undefined) {
+      localStorage.getItem("access_token") && getMyPlaylists();
+    }
   }, [])
 
   return { items, isLoading };

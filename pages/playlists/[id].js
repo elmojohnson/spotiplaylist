@@ -7,21 +7,35 @@ import useSearchTracks from "@/hooks/spotify/useSearchTracks";
 import Layout from "@/layouts/Layout";
 import Tabs from "@/layouts/playlist_tab/Tabs";
 import Header from "@/layouts/playlist/Header";
+import Loading from "@/components/utils/Loading";
+
+import { motion, AnimatePresence } from "framer-motion";
 
 const Playlist = () => {
-  const { name, image, description, updatePlaylistInfo, deletePlaylist } = usePlaylist();
+  const playlist = usePlaylist();
   const mutatePlaylist = useMutatePlaylist();
   const searchTracks = useSearchTracks();
 
   return (
     <Layout>
       <PlaylistContext.Provider
-        value={{ name, image, description, updatePlaylistInfo, deletePlaylist, ...mutatePlaylist, ...searchTracks }}
+        value={{ ...playlist, ...mutatePlaylist, ...searchTracks }}
       >
-        <div className="flex flex-col space-y-4">
-          <Header />
-          <Tabs />
-        </div>
+        <AnimatePresence>
+          {playlist.isPlaylistLoading ? (
+            <Loading />
+          ) : (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="flex flex-col space-y-4"
+            >
+              <Header />
+              <Tabs />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </PlaylistContext.Provider>
     </Layout>
   );

@@ -5,6 +5,7 @@ const PlaylistContext = createContext({
   name: "",
   description: "",
   image: "",
+  isPlaylistLoading: false,
 
   // Mutating playlist
   selectedTracks: [],

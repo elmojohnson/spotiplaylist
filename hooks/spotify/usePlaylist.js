@@ -7,14 +7,14 @@ import { toast } from "react-toastify";
 const usePlaylist = () => {
   const router = useRouter();
 
-  const [isLoading, setLoading] = useState(false);
+  const [isPlaylistLoading, setPLaylistLoading] = useState(false);
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
 
   const getPlaylist = async () => {
     try {
-      setLoading(true);
+      setPLaylistLoading(true);
       const result = await spotify.get("/playlists/" + router.query.id);
 
       setName(result.data.name);
@@ -23,7 +23,7 @@ const usePlaylist = () => {
     } catch (error) {
       console.error(error);
     } finally {
-      setLoading(false);
+      setPLaylistLoading(false);
     }
   };
 
@@ -65,10 +65,12 @@ const usePlaylist = () => {
   }
 
   useEffect(() => {
-    router.query.id && getPlaylist();
+    if(router.isReady && router.query.id) {
+      getPlaylist();
+    }
   }, [router]);
 
-  return { isLoading, name, image, description, updatePlaylistInfo, deletePlaylist };
+  return { isPlaylistLoading, name, image, description, updatePlaylistInfo, deletePlaylist };
 };
 
 export default usePlaylist;

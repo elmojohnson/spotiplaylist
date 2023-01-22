@@ -14,7 +14,7 @@
   }
 
   .navbar {
-    @apply py-3 bg-white shadow-lg text-muted sticky top-0 z-50;
+    @apply py-3 bg-white shadow text-muted sticky top-0 z-50;
   }
 
   .nav_title {
